@@ -191,10 +191,10 @@ export default function Dashboard() {
   const fetchData = async () => {
     try {
       const [uRes, pRes, cRes, oRes] = await Promise.all([
-        axios.get('http://127.0.0.1:8000/api/admin/analytics/'),
-        axios.get('http://127.0.0.1:8000/api/products/'),
-        axios.get('http://127.0.0.1:8000/api/categories/'),
-        axios.get('http://127.0.0.1:8000/api/orders/')
+        axios.get('https://gaming-store-33g5.onrender.com/api/admin/analytics/'),
+        axios.get('https://gaming-store-33g5.onrender.com/api/products/'),
+        axios.get('https://gaming-store-33g5.onrender.com/api/categories/'),
+        axios.get('https://gaming-store-33g5.onrender.com/api/orders/')
       ]);
       setUsers(uRes.data);
       setProducts(pRes.data);
@@ -237,9 +237,9 @@ export default function Dashboard() {
       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
       if (editingProduct.id) {
-        await axios.put(`http://127.0.0.1:8000/api/products/${editingProduct.id}/`, formData, config);
+        await axios.put(`https://gaming-store-33g5.onrender.com/api/products/${editingProduct.id}/`, formData, config);
       } else {
-        await axios.post('http://127.0.0.1:8000/api/products/', formData, config);
+        await axios.post('https://gaming-store-33g5.onrender.com/api/products/', formData, config);
       }
       setEditingProduct(null);
       fetchData();
@@ -250,9 +250,9 @@ export default function Dashboard() {
     e.preventDefault();
     try {
       if (editingCategory.id) {
-        await axios.put(`http://127.0.0.1:8000/api/categories/${editingCategory.id}/`, editingCategory);
+        await axios.put(`https://gaming-store-33g5.onrender.com/api/categories/${editingCategory.id}/`, editingCategory);
       } else {
-        await axios.post('http://127.0.0.1:8000/api/categories/', editingCategory);
+        await axios.post('https://gaming-store-33g5.onrender.com/api/categories/', editingCategory);
       }
       setEditingCategory(null);
       fetchData();
@@ -261,7 +261,7 @@ export default function Dashboard() {
 
   const deleteProduct = async (id) => {
     if(window.confirm(t.confirm_delete_product)) {
-      await axios.delete(`http://127.0.0.1:8000/api/products/${id}/`);
+      await axios.delete(`https://gaming-store-33g5.onrender.com/api/products/${id}/`);
       fetchData();
     }
   };
@@ -269,7 +269,7 @@ export default function Dashboard() {
   const deleteCategory = async (id) => {
     if(window.confirm(t.confirm_delete_category)) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/categories/${id}/`);
+        await axios.delete(`https://gaming-store-33g5.onrender.com/api/categories/${id}/`);
         fetchData();
       } catch (err) {
         console.error(err);

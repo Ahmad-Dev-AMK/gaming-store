@@ -14,13 +14,13 @@ export default function Login() {
     setError('');
     try {
       if (isLogin) {
-        const res = await axios.post('http://127.0.0.1:8000/api/auth/login/', formData);
+        const res = await axios.post('https://gaming-store-33g5.onrender.com/api/auth/login/', formData);
         localStorage.setItem('access_token', res.data.access);
         localStorage.setItem('refresh_token', res.data.refresh);
         localStorage.setItem('is_staff', res.data.is_staff);
         navigate('/');
       } else {
-        await axios.post('http://127.0.0.1:8000/api/auth/register/', formData);
+        await axios.post('https://gaming-store-33g5.onrender.com/api/auth/register/', formData);
         setIsLogin(true);
         setError('تم التسجيل بنجاح! يرجى تسجيل الدخول.');
       }

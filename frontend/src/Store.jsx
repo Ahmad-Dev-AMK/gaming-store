@@ -158,7 +158,7 @@ export default function Store() {
   });
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/products/')
+    axios.get('https://gaming-store-33g5.onrender.com/api/products/')
       .then(res => {
         setProducts(res.data);
         setLoading(false);
@@ -168,7 +168,7 @@ export default function Store() {
         setLoading(false);
       });
 
-    axios.get('http://127.0.0.1:8000/api/categories/')
+    axios.get('https://gaming-store-33g5.onrender.com/api/categories/')
       .then(res => {
         setCategories(res.data);
       })
@@ -280,7 +280,7 @@ export default function Store() {
       }))
     };
 
-    axios.post('http://127.0.0.1:8000/api/orders/', payload, {
+    axios.post('https://gaming-store-33g5.onrender.com/api/orders/', payload, {
       headers: isLoggedIn ? { Authorization: `Bearer ${localStorage.getItem('access_token')}` } : {}
     })
       .then(() => {
@@ -503,7 +503,7 @@ export default function Store() {
               return (
                 <div key={product.id} className="product-card" onClick={() => {
                   setSelectedProduct(product);
-                  axios.get(`http://127.0.0.1:8000/api/products/${product.id}/`).catch(console.error);
+                  axios.get(`https://gaming-store-33g5.onrender.com/api/products/${product.id}/`).catch(console.error);
                 }}>
                   {isPopular && <div style={{ position: 'absolute', top: 10, left: 10, background: 'var(--neon-magenta)', color: '#fff', padding: '5px 10px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold', zIndex: 2, boxShadow: '0 0 10px var(--neon-magenta)' }}>{t.popular}</div>}
                   <img src={product.image || product.image_url || `https://loremflickr.com/400/300/computer,gaming?lock=${product.id}`} alt={product.name} />

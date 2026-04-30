@@ -22,7 +22,7 @@ axios.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
-          const res = await axios.post('http://127.0.0.1:8000/api/auth/refresh/', {
+          const res = await axios.post('https://gaming-store-33g5.onrender.com/api/auth/refresh/', {
             refresh: refreshToken
           });
           localStorage.setItem('access_token', res.data.access);
